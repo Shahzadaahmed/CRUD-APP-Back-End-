@@ -49,8 +49,12 @@ app.post('/user', (req, res) => {
 });
 
 // Note: This function will delete user from the users bucket...!
-app.delete('user/:id', (req, res) => {
-    res.send(users[req]);
+app.post('/user/delete', (req, res) => {
+    users.map((element, i) => {
+        if (element.email == req.body.email) users.splice(i, 1);
+    });
+    console.log("Users: ", users);
+    res.send(users);
 });
 
 // Note: Running the app...!
