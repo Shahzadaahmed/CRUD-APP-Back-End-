@@ -57,6 +57,16 @@ app.post('/user/delete', (req, res) => {
     res.send(users);
 });
 
+// Note: This function will update user from the users bucket...!
+app.post('/user/update', (req, res) => {
+    users.map((item, index) => {
+        if (item.email == req.body.email) users.splice(index, 1, req.body.updateUser);
+    });
+
+    console.log('Update User List:', users);
+    res.send(users);
+})
+
 // Note: Running the app...!
 app.listen(port, () => {
     console.log(`Server is running on port ${port}!`);
