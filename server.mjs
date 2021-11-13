@@ -65,7 +65,13 @@ app.post('/user/update', (req, res) => {
 
     console.log('Update User List:', users);
     res.send(users);
-})
+});
+
+// Note: This function will all delete user from the users bucket...!
+app.delete('/user/deleteAll', (req, res) => {
+    users.splice(0, users.length);
+    res.send(users);
+});
 
 // Note: Running the app...!
 app.listen(port, () => {
